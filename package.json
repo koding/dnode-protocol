@@ -1,7 +1,7 @@
 {
   "author": "Christopher Thorn <chris@koding.com> (http://koding.com)",
   "private": true,
-  "name": "dnode-protocol",
+  "name": "koding-dnode-protocol",
   "description": "A clone of dnode-protocol that is built on top of synchronous and asynchronous middleware, and allows user-defined processing",
   "version": "0.1.0",
   "main": "index.coffee",
@@ -10,5 +10,12 @@
     "jsonify": "0.0.0",
     "kd-shim-jspath": "^0.1.1",
     "scrubber": "git+ssh://git@github.com:koding/scrubber"
+  },
+  "devDependencies": {
+    "browserify": "^8.1.1",
+    "coffeeify": "^1.0.0"
+  },
+  "browser": {
+    "jspath": "kd-shim-jspath"
   }
 }
