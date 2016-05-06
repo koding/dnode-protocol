@@ -1,11 +1,11 @@
-var DnodeScrubber, DnodeSession, DnodeStore, EventEmitter, Scrubber, createId, exports, getAt, json, parseArgs, setAt, stream, _ref,
-  __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
-  __hasProp = {}.hasOwnProperty,
-  __extends = function(child, parent) { for (var key in parent) { if (__hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; };
+var DnodeScrubber, DnodeSession, DnodeStore, EventEmitter, Scrubber, createId, exports, getAt, json, parseArgs, ref, setAt, stream,
+  bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; },
+  extend = function(child, parent) { for (var key in parent) { if (hasProp.call(parent, key)) child[key] = parent[key]; } function ctor() { this.constructor = child; } ctor.prototype = parent.prototype; child.prototype = new ctor(); child.__super__ = parent.prototype; return child; },
+  hasProp = {}.hasOwnProperty;
 
 EventEmitter = require('events').EventEmitter;
 
-_ref = require('jspath'), getAt = _ref.getAt, setAt = _ref.setAt;
+ref = require('jspath'), getAt = ref.getAt, setAt = ref.setAt;
 
 Scrubber = require('scrubber');
 
@@ -35,14 +35,14 @@ exports = module.exports = function(wrapper) {
 * @description an implementation of the Session class from dnode-protocol
  */
 
-exports.Session = DnodeSession = (function(_super) {
+exports.Session = DnodeSession = (function(superClass) {
   var apply;
 
-  __extends(DnodeSession, _super);
+  extend(DnodeSession, superClass);
 
-  function DnodeSession(id, wrapper) {
-    this.id = id;
-    this.parse = __bind(this.parse, this);
+  function DnodeSession(id1, wrapper) {
+    this.id = id1;
+    this.parse = bind(this.parse, this);
     this.remote = {};
     this.instance = 'function' === typeof wrapper ? new wrapper(this.remote, this) : wrapper || {};
     this.localStore = new DnodeStore;
@@ -76,11 +76,11 @@ exports.Session = DnodeSession = (function(_super) {
   };
 
   DnodeSession.prototype.parse = function(line) {
-    var err, msg;
+    var err, error, msg;
     try {
       msg = json.parse(line);
-    } catch (_error) {
-      err = _error;
+    } catch (error) {
+      err = error;
       this.emit('error', new SyntaxError("JSON parsing error: " + err));
     }
     return this.handle(msg);
@@ -158,11 +158,11 @@ exports.Session = DnodeSession = (function(_super) {
 * @description an implementation of the Scrubber class from dnode-protocol that supports a middleware stack
  */
 
-exports.Scrubber = DnodeScrubber = (function(_super) {
-  __extends(DnodeScrubber, _super);
+exports.Scrubber = DnodeScrubber = (function(superClass) {
+  extend(DnodeScrubber, superClass);
 
   function DnodeScrubber(store, stack, autoCull) {
-    var dnodeMutators, userStack, _ref1;
+    var dnodeMutators, ref1, userStack;
     if (store == null) {
       store = new DnodeStore;
     }
@@ -190,7 +190,7 @@ exports.Scrubber = DnodeScrubber = (function(_super) {
         }
       }
     ];
-    userStack = (_ref1 = stack != null ? stack : DnodeScrubber.stack) != null ? _ref1 : [];
+    userStack = (ref1 = stack != null ? stack : DnodeScrubber.stack) != null ? ref1 : [];
     Scrubber.apply(this, dnodeMutators.concat(userStack));
   }
 
@@ -233,8 +233,8 @@ exports.Scrubber = DnodeScrubber = (function(_super) {
 * @description an implementation of the Store class from dnode-protocol
  */
 
-exports.Store = DnodeStore = (function(_super) {
-  __extends(DnodeStore, _super);
+exports.Store = DnodeStore = (function(superClass) {
+  extend(DnodeStore, superClass);
 
   function DnodeStore() {
     this.items = [];
@@ -254,9 +254,9 @@ exports.Store = DnodeStore = (function(_super) {
   };
 
   DnodeStore.prototype.add = function(id, fn) {
-    var _ref1;
+    var ref1;
     if (!fn) {
-      _ref1 = [id, fn], fn = _ref1[0], id = _ref1[1];
+      ref1 = [id, fn], fn = ref1[0], id = ref1[1];
     }
     if (id == null) {
       id = this.items.length;

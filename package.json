@@ -1,7 +1,6 @@
 {
   "name": "koding-dnode-protocol",
-  "version": "0.2.0",
-  "private": true,
+  "version": "0.2.1",
   "main": "build/index.js",
   "scripts": {
     "prepublish": "rm -fr build && mkdir -p build && coffee -p -b index.coffee > build/index.js"
@@ -10,8 +9,12 @@
     "hat": "0.0.3",
     "jsonify": "0.0.0",
     "kd-shim-jspath": "^0.2.0",
-    "scrubber": "git+ssh://git@github.com:koding/scrubber#v0.2.0"
+    "scrubber": "git+ssh://git@github.com:koding/scrubber#v0.2.1"
   },
+  "licenses": [{
+    "type": "Apache-2.0",
+    "url": "http://www.apache.org/licenses/LICENSE-2.0"
+  }],
   "browser": {
     "jspath": "kd-shim-jspath"
   }
