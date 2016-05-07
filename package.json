@@ -9,7 +9,7 @@
     "hat": "0.0.3",
     "jsonify": "0.0.0",
     "kd-shim-jspath": "^0.2.0",
-    "scrubber": "git+ssh://git@github.com:koding/scrubber#v0.2.1"
+    "scrubber": "koding/scrubber#v0.2.1"
   },
   "licenses": [{
     "type": "Apache-2.0",
